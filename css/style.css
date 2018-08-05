@@ -13,3 +13,8 @@ img{
 	width:700px;
 	height:200px;
 }
+
+p{
+	  text-transform: uppercase;
+	  font-weight: bold;
+}
