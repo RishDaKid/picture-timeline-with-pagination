@@ -11,10 +11,12 @@
   	$image = $_FILES['image']['name'];
   	// Get text
 $image_text = mysqli_real_escape_string($db, $_POST['image_text']);
+$image_description = mysqli_real_escape_string($db, $_POST['image_description']);
+
   	// image file directory
   	$target = "images/".basename($image);
 
-  	$sql = "INSERT INTO images (image,image_text) VALUES ('$image', '$image_text')";
+  	$sql = "INSERT INTO images (image,image_text,image_description) VALUES ('$image', '$image_text','$image_description')";
   	// execute query
   	mysqli_query($db, $sql);
 
@@ -80,6 +82,7 @@ $image_text = mysqli_real_escape_string($db, $_POST['image_text']);
       echo "<div id='img_div'>";
       	echo "<img src='images/".$row['image']."' >";
         echo "<p>".$row['image_text']."</p>";
+        echo "<p>".$row['image_description']."</p>";
       echo "</div>";
     }
   ?>
@@ -92,12 +95,20 @@ $image_text = mysqli_real_escape_string($db, $_POST['image_text']);
       <textarea 
         id="text" 
         cols="40" 
-        rows="4" 
+        rows="1" 
         name="image_text" 
+        placeholder="Put the title here"></textarea>
+    </div>
+    <div>
+<div>
+      <textarea 
+        id="text" 
+        cols="40" 
+        rows="4" 
+        name="image_description" 
         placeholder="Say something about this image..."></textarea>
     </div>
     <div>
-
   		<button type="submit" name="upload">POST</button>
   	</div>
   </form>

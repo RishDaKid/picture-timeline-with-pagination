@@ -43,8 +43,10 @@ $this_page_first_result = ($page-1)*$results_per_page;
 $sql='SELECT * FROM images order by id desc LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
 $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {
-echo "<p>".$row['image_text']."</p>";
- echo "<img src='images/".$row['image']."' ><br><br>";
+echo "<h3>".$row['image_text']."</h3>";
+echo "<img src='images/".$row['image']."' ><br>";
+echo "<p>".$row['image_description']."</p>";
+
 }
 
 // display the links to the pages
